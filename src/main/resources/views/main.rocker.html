@@ -1,0 +1,20 @@
+@option discardLogicWhitespace=true
+
+@args (String title, RockerContent extracss, RockerContent extrajs, RockerBody content)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@if(title != null) {@title - }SimpleStream</title>
+
+    @extracss
+</head>
+<body>
+
+@content
+
+@extrajs
+
+</body>
+</html>

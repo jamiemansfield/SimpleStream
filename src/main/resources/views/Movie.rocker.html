@@ -1,0 +1,29 @@
+@args (me.jamiemansfield.simplestream.config.Movie movie)
+
+@extracss => {
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.4.0/alt/video-js-cdn.min.css"
+          integrity="sha384-/pTYlkUWtR/BjHJMyO0cO53gHvFxQaU3prjb8XEEXVZOBF2etOH9hdlLtPg3dCn2"
+          crossorigin="anonymous">
+}
+
+@extrajs => {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.4.0/video.min.js"
+            integrity="sha384-dl8GFfbBunvxD2rw1VrQx5Pr6UfBDO6IoBA4hclumzEdnWO4d+++KYFiyxrHk+2f"
+            crossorigin="anonymous"></script>
+}
+
+@views.main.template(movie.getName(), extracss, extrajs) -> {
+    @movie.getDescription()
+    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+           poster="/@movie.getId()/poster.png" data-setup="{}">
+        <source src="/@movie.getId()/video.mp4" type='video/mp4'>
+        <source src="/@movie.getId()/video.webm" type='video/webm'>
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+
+    <a href="/"><h2>Return Home</h2></a>
+}

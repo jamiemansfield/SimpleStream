@@ -1,0 +1,11 @@
+@import java.util.List
+@import me.jamiemansfield.simplestream.config.Movie
+
+@args (List<Movie> movies) @* </Movie> *@
+
+@views.main.template("Home", RockerContent.NONE, RockerContent.NONE) -> {
+    @for (Movie movie : movies) {
+        <a href="/@movie.getId()"><h1>@movie.getName()</h1></a>
+        <span>@movie.getDescription()</span>
+    }
+}

@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.fizzed:rocker-gradle-plugin:0.22.0'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'com.fizzed.rocker'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'me.jamiemansfield'
+version = '0.0.1-indev'
+
+sourceSets {
+    main {
+        rocker {
+            srcDir('src/main/resources')
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // General
+    compile 'com.google.guava:guava:21.0'
+    compile 'net.kyori:blizzard:1.0.4-JDK8144185'
+
+    // Web
+    compile 'io.javalin:javalin:1.0.0'
+    compile 'com.fizzed:rocker-runtime:0.22.0'
+
+    // Logging
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.apache.logging.log4j:log4j-api:2.8.1'
+    compile 'org.apache.logging.log4j:log4j-core:2.8.1'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.3.1'
+}
